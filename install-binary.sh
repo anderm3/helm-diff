@@ -98,7 +98,7 @@ downloadFile() {
 # installFile verifies the SHA256 for the file, then unpacks and
 # installs it.
 installFile() {
-  HELM_TMP="/tmp/$PROJECT_NAME"
+  HELM_TMP="~/.tmp/$PROJECT_NAME"
   mkdir -p "$HELM_TMP"
   tar xf "$PLUGIN_TMP_FILE" -C "$HELM_TMP"
   echo "Cleaning up $PLUGIN_TMP_FILE"; rm "$PLUGIN_TMP_FILE"
