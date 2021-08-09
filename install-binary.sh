@@ -86,7 +86,7 @@ getDownloadURL() {
 # downloadFile downloads the latest binary package and also the checksum
 # for that binary.
 downloadFile() {
-  PLUGIN_TMP_FILE="/tmp/${PROJECT_NAME}.tgz"
+  PLUGIN_TMP_FILE=".${PROJECT_NAME}.tgz"
   echo "Downloading $DOWNLOAD_URL"
   if type "curl" >/dev/null; then
     curl -L "$DOWNLOAD_URL" -o "$PLUGIN_TMP_FILE"
@@ -101,6 +101,7 @@ installFile() {
   HELM_TMP="/tmp/$PROJECT_NAME"
   mkdir -p "$HELM_TMP"
   tar xf "$PLUGIN_TMP_FILE" -C "$HELM_TMP"
+  echo "Cleaning up $PLUGIN_TMP_FILE"; rm "$PLUGIN_TMP_FILE"
   HELM_TMP_BIN="$HELM_TMP/diff/bin/diff"
   echo "Preparing to install into ${HELM_PLUGIN_DIR}"
   mkdir -p "$HELM_PLUGIN_DIR/bin"
